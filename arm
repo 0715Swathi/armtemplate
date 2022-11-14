@@ -3,14 +3,17 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachines_myVM_name": {
-            "datasource":"ServiceNow::Resource Pools::VirtualMachinePool.getByAvailabilityZone"
+            "datasource":"ServiceNow::Resource Pools::VirtualMachinePool.getByAvailabilityZone",
+            "type":"Lookup Select Box"
         },
         "virtualNetworks_MyVNET_name": {
-            "datasource":"ServiceNow::Resource Pools::NetworkPool.getObjectsByLDC"
+            "datasource":"ServiceNow::Resource Pools::NetworkPool.getObjectsByLDC",
+            "type":"Lookup Select Box"
         },
         "networkInterfaces_myVMNic_name": {
             "datasource":"ServiceNow::Resource Pools:: SubnetPool.getObjectsByNetwork",
-        "datasourceFilter":{"virtualNetworks_MyVNET_name":"virtualNetworks_MyVNET_name"}
+        "datasourceFilter":{"virtualNetworks_MyVNET_name":"virtualNetworks_MyVNET_name"},
+           "type":"Lookup Select Box"
         },
         
     },
