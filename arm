@@ -2,20 +2,40 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "SNC::Parameter::Metadata": {
-        "KeyName" : {
-            "datasource":"ServiceNow::Pools::CloudKeyPairPool.getObjectsByLDC"
+        "extensions_fileSecurityExtension_LicenseKey": {
+            "type": "SecureString"
         },
-        "Network":{
-            "datasource":"ServiceNow::Pools::NetworkPool.getObjectsByLDC"
+        "extensions_fileSecurityExtension_Install_RealtimeProtection": {
+            "type": "Bool"
         },
-        "SubnetPool":{
+        "extensions_fileSecurityExtension_Install_ProtocolFiltering": {
+            "type": "Bool"
+        },
+        "extensions_fileSecurityExtension_Install_DeviceControl": {
+            "type": "Bool"
+        },
+        "extensions_fileSecurityExtension_Enable_Cloud": {
+            "type": "Bool"
+        },
+        "extensions_fileSecurityExtension_Enable_PUA": {
+            "type": "Bool"
+        },
+        "extensions_fileSecurityExtension_ERAAgentCfgUrl": {
+            "type": "SecureString"
+        },
+        "virtualMachines_myVM_name": {
+            "datasource":"ServiceNow::Pools::VirtualMachinePool.getByAvailabilityZone",
+            
+        },
+        "virtualNetworks_MyVNET_name": {
+            "datasource":"ServiceNow::Pools::NetworkPool.getObjectsByLDC",
+        },
+        "networkInterfaces_myVMNic_name": {
             "datasource":"ServiceNow::Pools:: SubnetPool.getObjectsByNetwork",
-            "datasourceFilter":{"Network":"Network"}
-          }
+            "datasourceFilter":{"virtualNetworks_MyVNET_name":"virtualNetworks_MyVNET_name"}
+        },
         
     },
-    }
     "variables": {},
     "resources": [
         {
@@ -209,3 +229,4 @@
         }
     ]
 }
+        
