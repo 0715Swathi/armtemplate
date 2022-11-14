@@ -2,17 +2,15 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        
         "virtualMachines_myVM_name": {
-            "datasource":"ServiceNow::Resource Pools::VirtualMachinePool.getByAvailabilityZone",
-            
+            "datasource":"ServiceNow::Resource Pools::VirtualMachinePool.getByAvailabilityZone"
         },
         "virtualNetworks_MyVNET_name": {
-            "datasource":"ServiceNow::Resource Pools::NetworkPool.getObjectsByLDC",
+            "datasource":"ServiceNow::Resource Pools::NetworkPool.getObjectsByLDC"
         },
         "networkInterfaces_myVMNic_name": {
             "datasource":"ServiceNow::Resource Pools:: SubnetPool.getObjectsByNetwork",
-            "datasourceFilter":{"virtualNetworks_MyVNET_name":"virtualNetworks_MyVNET_name"}
+        "datasourceFilter":{"virtualNetworks_MyVNET_name":"virtualNetworks_MyVNET_name"}
         },
         
     },
